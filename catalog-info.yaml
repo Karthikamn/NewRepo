@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+
+metadata:
+  name: api-flask
+  description: Flask API deployed using Docker and Kubernetes
+  tags:
+    - python
+    - flask
+    - docker
+    - kubernetes
+
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests

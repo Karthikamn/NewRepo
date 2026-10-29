@@ -1,0 +1,22 @@
+trigger:
+  - main
+
+stages:
+ - stage:  Build
+   displayName: Build job
+   jobs:
+     - job: Build
+       displayName: Build job
+       pool: 'AzureDevOpsING'
+       steps:
+       - task: Docker@2
+         displayName: docker build and push to the container registry 
+         inputs:
+           command: buildAndPush
+           repository: karthikamn/new-python
+           Dockerfile: '**/Dockerfile'
+           containerRegistry: dockerserv1
+       - task: PublishPipelineArtifact@1
+         inputs:
+           targetPath: '$(Pipeline.Workspace)'
+           publishLocation: 'pipeline'
